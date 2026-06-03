@@ -39,7 +39,7 @@ def _scores_with_norms(shifts: List[Dict], norms: ScoreNorms) -> np.ndarray:
 
 
 def ranking_stability_temporal(shifts: List[Dict]) -> Dict:
-    """Устойчивость рангов при разных хронологических нормировочных cohort'ах."""
+    """Устойчивость рангов при разных хронологических нормировочных cohort'ах"""
     if len(shifts) < 20:
         return {"error": "недостаточно смен"}
 
@@ -70,7 +70,7 @@ def ranking_stability_temporal(shifts: List[Dict]) -> Dict:
 
 
 def ranking_stability_bootstrap(shifts: List[Dict]) -> Dict:
-    """Bootstrap-CI для Spearman ρ между двумя независимыми ресэмплами."""
+    """Bootstrap-CI для Spearman ρ между двумя независимыми ресэмплами"""
     if len(shifts) < 20:
         return {"error": "недостаточно смен"}
 
@@ -106,7 +106,7 @@ def ranking_stability_bootstrap(shifts: List[Dict]) -> Dict:
 def _random_weights_on_simplex(rng: np.random.Generator,
                                base: np.ndarray,
                                radius: float) -> np.ndarray:
-    """Возмущение весов в окрестности base (на симплексе)."""
+    """Возмущение весов в окрестности base (на симплексе)"""
     delta = rng.uniform(-radius, radius, size=base.shape)
     delta -= delta.mean()  # сохранить сумму
     w = base + delta
@@ -116,7 +116,7 @@ def _random_weights_on_simplex(rng: np.random.Generator,
 
 
 def weight_sensitivity(shifts: List[Dict], top_n: int) -> Dict:
-    """Доля смен, остающихся в top-N при возмущениях весов S."""
+    """Доля смен, остающихся в top-N при возмущениях весов S"""
     if len(shifts) < top_n:
         return {"error": "недостаточно смен"}
 
@@ -174,7 +174,7 @@ def weight_sensitivity(shifts: List[Dict], top_n: int) -> Dict:
     }
 
 def assess_robustness(shifts: List[Dict], top_n: int) -> Dict:
-    """Полный пакет проверок устойчивости ранжирования."""
+    """Полный пакет проверок устойчивости ранжирования"""
     return {
         "temporal_stability": ranking_stability_temporal(shifts),
         "bootstrap_stability": ranking_stability_bootstrap(shifts),

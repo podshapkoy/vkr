@@ -39,7 +39,7 @@ def _safe_p(arr: np.ndarray, q: float, fallback: float) -> float:
 
 
 def fit_norms(shifts: List[Dict]) -> ScoreNorms:
-    """Подгонка нормировок на (тренировочной) выборке смен."""
+    """Подгонка нормировок на (тренировочной) выборке смен"""
     if not shifts:
         return ScoreNorms(cv_star=0.05, tons_p95=1.0)
     cvs = np.array([s["current_cv"] + s["weight_cv"] for s in shifts], dtype=float)
